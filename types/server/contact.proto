@@ -1,0 +1,45 @@
+syntax="proto3";
+package s_contact;
+import "google/protobuf/any.proto";
+
+message Address
+{
+    string home_address = 1;
+    string unit_address = 2;
+}
+message PeopleInfo
+{
+    string name = 1;
+
+    message phone
+    {
+        string number = 1;
+        enum Type
+        {
+            MP = 0;
+            TEL = 1;
+        }
+        Type type = 2;//枚举字段，非常重要！
+    }
+
+    //repeated phone phone_numbers = 2;
+    
+    google.protobuf.Any any = 3;//any字段中定义了package，需要这样访问
+    oneof other_types
+    {
+        string qq = 4;//从编号为4，注意不能使用repeated
+        string wechat = 5;//编号为5
+
+    }
+
+    map<string,string>  remark = 7;//不能使用repeated，无序
+
+    reserved 2;
+
+    phone phone_number = 8;
+}
+
+message Contacts
+{
+    repeated PeopleInfo contacts = 1;
+}
