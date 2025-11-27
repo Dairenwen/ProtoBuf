@@ -1,0 +1,9 @@
+syntax="proto3";//指定proto版本
+package contact;//定义包名
+
+message PeopleInfo
+{
+    string name = 1;//编号代表字段序号
+    string email = 2;
+    string phone = 3;
+}
