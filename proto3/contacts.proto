@@ -1,0 +1,19 @@
+syntax="proto3";
+package contact;
+
+message PeopleInfo
+{
+    string name = 1;
+
+    message phone
+    {
+        string phone_number = 1;
+    }
+
+    repeated phone phone_numbers = 2;
+}
+
+ message Contacts
+ {
+    repeated PeopleInfo contacts = 1;
+ }
